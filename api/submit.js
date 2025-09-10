@@ -5,6 +5,7 @@
 const { google } = require('googleapis');
 const { Resend } = require('resend');
 
+console.log(process.env.RESEND_API_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function cors(res) {
