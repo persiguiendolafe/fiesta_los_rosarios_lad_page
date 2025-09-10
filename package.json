@@ -6,6 +6,7 @@
     "deploy": "vercel --prod"
   },
   "dependencies": {
-    "resend": "^3.2.0"
+    "googleapis": "^133.0.0",
+    "resend": "^0.1.0"
   }
 }

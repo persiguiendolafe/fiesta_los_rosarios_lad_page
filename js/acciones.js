@@ -31,7 +31,30 @@
       }catch(_e){}
       
       // enviar estos datos formateados a un char de WS
-      
+      try {
+        const resp = await fetch('../api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre,
+            telefono,
+            cantidad,
+            correo,
+            tipo,
+            precio,
+            total,
+            mensaje
+          })
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data?.error || 'Error desconocido');
+  
+      } catch (err) {
+        console.error(err);
+        alert('No pudimos enviar la solicitud. Inténtalo nuevamente.');
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = origText; }
+      }
 
     });
 
