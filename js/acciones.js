@@ -2,7 +2,7 @@
     const form = document.getElementById('form-compra');
     const UEPA = 'https://uepatickets.com/tickets/en/entradas-musica-gran-fiesta-a-la-virgen-de-las-mercedes';
 
-    form?.addEventListener('submit', function(ev){
+    form?.addEventListener('submit',async function(ev){
       ev.preventDefault();
       const datos = new FormData(form);
       const nombre = (datos.get('nombre')||'').toString().trim();
@@ -31,17 +31,8 @@
       }catch(_e){}
       
       // enviar estos datos formateados a un char de WS
-      const datosFormateados = {
-        nombre,
-        telefono,
-        cantidad,
-        correo,
-        tipo,
-        precio,
-        total,
-        mensaje
-      };
       
+
     });
 
     // Autocompletar si el usuario ya llenó antes
