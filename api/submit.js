@@ -23,9 +23,8 @@ async function appendToSheet(values) {
   const client_email = requireEnv('GOOGLE_CLIENT_EMAIL');
   // Las llaves privadas de GCP suelen llevar \n escapados en Vercel; reemplazamos para formar el PEM correcto
   const private_key = requireEnv('GOOGLE_PRIVATE_KEY').replace(/\\\\n/g, '\n');
-  console.log('GOOGLE_PRIVATE_KEY', private_key);
   const spreadsheetId = requireEnv('GOOGLE_SHEET_ID');
-  const sheetRange = process.env.GOOGLE_SHEET_RANGE || 'Hoja1!A1';
+  const sheetRange = process.env.GOOGLE_SHEET_RANGE || "VENTAS!A1";
 
   const auth = new google.auth.JWT(
     client_email,
