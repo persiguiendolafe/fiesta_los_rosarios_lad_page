@@ -46,7 +46,7 @@ async function sendEmail({ to, subject, html, text }) {
 
   const from = process.env.MAIL_FROM || `Notificaciones <notificaciones@parroquiasantamariamadrededios.com>`;
 
-  await resend.emails.send({
+  const resp = await resend.emails.send({
     from,
     to,
     subject,
@@ -54,6 +54,9 @@ async function sendEmail({ to, subject, html, text }) {
     text,
   });
 
+  console.log("Respuesta Email enviado:", resp);
+  
+  return resp;
 }
 
 module.exports = async function handler(req, res) {
