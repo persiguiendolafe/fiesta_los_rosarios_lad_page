@@ -3,7 +3,7 @@
 // Requiere variables de entorno configuradas en Vercel.
 
 const { google } = require('googleapis');
-const Resend = require('resend');
+const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
