@@ -6,6 +6,6 @@
   },
   "dependencies": {
     "googleapis": "^133.0.0",
-    "resend": "^0.1.0"
+    "resend": "^6.0.3"
   }
 }
