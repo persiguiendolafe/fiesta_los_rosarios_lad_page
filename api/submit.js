@@ -5,8 +5,7 @@
 const { google } = require('googleapis');
 const { Resend } = require('resend');
 
-console.log(process.env.RESEND_API_KEY);
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(requireEnv('RESEND_API_KEY'));
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -24,6 +23,7 @@ async function appendToSheet(values) {
   const client_email = requireEnv('GOOGLE_CLIENT_EMAIL');
   // Las llaves privadas de GCP suelen llevar \n escapados en Vercel; reemplazamos para formar el PEM correcto
   const private_key = requireEnv('GOOGLE_PRIVATE_KEY').replace(/\\n/g, '\n');
+  console.log('GOOGLE_PRIVATE_KEY', private_key);
   const spreadsheetId = requireEnv('GOOGLE_SHEET_ID');
   const sheetRange = process.env.GOOGLE_SHEET_RANGE || 'Hoja1!A1';
 
