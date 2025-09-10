@@ -2,7 +2,6 @@
   "name": "fiesta-landing",
   "private": true,
   "scripts": {
-    "dev": "vercel dev",
     "deploy": "vercel --prod"
   },
   "dependencies": {
