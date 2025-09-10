@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fiesta Pro‑Fondos – Parroquia Santa María Madre de Dios</title>
+  <meta name="description" content="Gran fiesta pro‑recaudación de fondos. Compra tus entradas en línea o en taquilla." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand" aria-label="Identidad del evento">
+      <div class="brand__logo" aria-hidden="true">
+        <img src="img/logo.jpg" alt="Logo de la parroquia">
+      </div>
+      <div class="brand__title">Fiesta Pro‑Fondos · Parroquia Santa María Madre de Dios</div>
+    </div>
+
+    <div class="hero" style="margin-top:18px">
+      <div>
+        <h1>¡Una noche de música, alegría y solidaridad!</h1>
+        <p class="lead">Acompáñanos y apoya nuestros proyectos parroquiales. Compra tu entrada en línea o en taquilla física.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#venta-online">Formulario rápido</a>
+          <a class="btn btn--ghost" id="btn-uepa-top" href="https://uepatickets.com/tickets/en/entradas-musica-gran-fiesta-a-la-virgen-de-las-mercedes" target="_blank" rel="noopener">Compra tu entrada en Uepatickets</a>
+        </div>
+      </div>
+      <figure class="hero__poster" aria-label="Flyer del evento">
+        <img src="img/flyer.jpg" alt="Flyer de la Gran Fiesta pro‑fondos" />
+      </figure>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Detalles del evento -->
+    <section class="section--accent" id="detalles">
+      <h2 style="margin:0 0 10px">Detalles del evento</h2>
+      <div class="grid-4" style="margin-top:14px">
+        <article class="card" aria-label="Artistas">
+          <h3>🎹 Artistas</h3>
+          <p style="margin:0">23 de Septiembre a las 7:00 PM</p>
+        </article>
+        <article class="card" aria-label="Fecha y hora">
+          <h3>📅 Fecha & hora</h3>
+          <p style="margin:0">23 de Septiembre a las 7:00 PM</p>
+        </article>
+        <article class="card" aria-label="Lugar">
+          <h3>📍 Lugar</h3>
+          <p style="margin:0">Salón Independencia, Ministerio de Defensa FFAA</p>
+        </article>
+        <article class="card" aria-label="Boletas">
+          <h3>🎟️ Boletas</h3>
+          <p style="margin:0">
+            <span>RD$4,000 pareja</span><br>
+            <span>RD$2,500 persona</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Venta online integrada (redirige a Uepatickets) -->
+    <section id="venta-online">
+      <div class="grid-2">
+        <form id="form-compra" aria-label="Formulario de compra">
+          <h2 style="margin:0 0 10px">Compra en línea</h2>
+          <p style="margin:0 0 16px">Completa tus datos para redirigirte a la página oficial de compra.</p>
+          <div>
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo" required />
+          </div>
+          <div>
+            <label for="telefono">WhatsApp (+1 809...)</label>
+            <input id="telefono" name="telefono" type="number" autocomplete="telefono" placeholder="809-000-0000" required />
+          </div>
+          <div>
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required />
+          </div>
+          <div class="grid-2">
+            <div>
+              <label for="tipo">Tipo de boleta</label>
+              <select id="tipo" name="tipo" required>
+                <option value="pareja">Pareja (RD$4,000)</option>
+                <option value="persona">Persona (RD$2,500)</option>
+              </select>
+            </div>
+            <div>
+              <label for="cantidad">Cantidad de boletas</label>
+              <input type="number" id="cantidad" name="cantidad" required min="1" placeholder="Cantidad de boletas" />
+            </div>
+          </div>
+          <div>
+            <label for="mensaje">Mensaje (opcional)</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Si deseas agregar un mensaje adicional, puedes hacerlo aquí"></textarea>
+          </div>
+          <div class="cta">
+            <button type="submit" class="btn btn--primary">Confirmar y comprar</button>
+          </div>
+        </form>
+        <div>
+          <h2 style="margin:0 0 10px">Indicaciones</h2>
+          <ul>
+            <li>Escribe tu nombre completo tal como aparece en tu documento de identidad.</li>
+            <li>Coloca un correo electrónico válido, donde recibirás la confirmación de tu compra.</li>
+            <li>Ingresa un número de teléfono activo para contactarte en caso de cualquier incidencia.</li>
+            <li>Selecciona la cantidad de taquillas que deseas adquirir.</li>
+            <li>💻 Completa todos los campos del formulario y asegura tu entrada desde aquí mismo.</li>
+            <li>📩 Al confirmar, recibirás un correo electrónico con los detalles de tu compra.</li>
+            <li>✨ <b>Promoción especial:</b> si compras más de 10 taquillas, ¡el envío es totalmente gratis!</li>
+          </ul>
+          <p style="padding:10px; margin: 10px 20px; border: 1px solid #000; border-radius: 10px">
+            O si prefieres comprar directamente en <b>Uepatickets</b>, puedes hacerlo aquí:
+            <a href="https://uepatickets.com/tickets/en/entradas-musica-gran-fiesta-a-la-virgen-de-las-mercedes" target="_blank">Ir directo a Uepatickets</a>
+          </p>
+        </div>
+      </div>  
+    </section>
+
+    <!-- Puntos de venta Fisico -->
+    <section class="section--accent" id="puntos-venta">
+      <h2 style="margin:0 0 10px">Puntos de venta</h2>
+      <div class="grid-4" style="margin-top:14px">
+        <article class="card" aria-label="Oficina Parroquial">
+          <h3>⛪ Oficina Parroquial</h3>
+          <p style="margin:0">Parroquia Santa María Madre de Dios</p>
+        </article>
+        <article class="card" aria-label="Uepatickets">
+          <h3>🔖 Uepatickets</h3>
+          <p style="margin:0">
+            <a href="https://uepatickets.com/tickets/en/entradas-musica-gran-fiesta-a-la-virgen-de-las-mercedes" target="_blank" rel="noopener">Puntos de venta autorizados</a>
+          </p>
+        </article>
+        <article class="card" aria-label="CCN Servicios">
+          <h3>🏪 CCN Servicios</h3>
+          <p style="margin:0">Centro de servicios</p>
+        </article>
+        <article class="card" aria-label="Supermercados">
+          <h3>🏪 Supermercados</h3>
+          <p style="margin:0">Nacional y Jumbo</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Galería: flyer + taquilla -->
+    <section aria-label="No te quedes fuera de esta gran fiesta">
+      <h2 style="margin:0 0 14px">🎟️ ¡No te quedes fuera de esta gran fiesta!</h2>
+      <p>Asegura tus taquillas ahora y acompáñanos en una noche de fe, alegría y música en honor a nuestra Madre y Patrona.</p>
+      <a href="#venta-online">👉 Compra tus taquillas aquí</a>
+    </section>
+
+    <!-- Redes -->
+    <section class="social" aria-label="Redes sociales">
+      <div>
+        <h2 style="margin:0 0 6px">Síguenos para novedades</h2>
+        <p style="margin:0; opacity:.95">Parroquia Santa María Madre de Dios</p>
+      </div>
+      <nav aria-label="enlaces a Instagram" style="display:flex; gap:10px; flex-wrap:wrap">
+        <a href="https://www.instagram.com/parroquiasantamariamadrededios/" target="_blank" rel="noopener">@parroquiasantamariamadrededios</a>
+        <a href="https://www.instagram.com/p/DKcqyIiONmH/" target="_blank" rel="noopener">Post del evento</a>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <small>© 2025 Parroquia Santa María Madre de Dios · "Tu aporte, nuestra misión"</small>
+  </footer>
+
+  <script src="js/acciones.js"></script>
+</body>
+</html>
