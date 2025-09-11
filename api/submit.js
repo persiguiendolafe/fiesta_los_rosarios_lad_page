@@ -34,11 +34,17 @@ async function appendToSheet(values) {
   );
 
   const sheets = google.sheets({ version: 'v4', auth });
-  await sheets.spreadsheets.values.append({
+  sheets.spreadsheets.values.append({
     spreadsheetId,
     range: sheetRange,
     valueInputOption: 'USER_ENTERED',
     requestBody: { values: [values] },
+  }).then((resp) => {
+    console.log("Respuesta Sheet guardado:", resp);
+    return { ok: true, savedToSheet: true };
+  }).catch((err) => {
+    console.error("Error guardando en Sheet:", err);
+    return { ok: false, savedToSheet: false, error: err };
   });
 }
 
@@ -46,17 +52,21 @@ async function sendEmail({ to, subject, html, text }) {
 
   const from = process.env.MAIL_FROM || `Notificaciones <onboarding@resend.dev>`;
 
-  const resp = await resend.emails.send({
+  resend.emails.send({
     from,
     to,
     subject,
     html,
     text,
+  }).then((resp) => {
+    console.log("Respuesta Email enviado:", resp);
+    return { ok: true, emailSent: true };
+  
+  }).catch((err) => {
+    console.error("Error enviando email:", err);
+    return { ok: false, emailSent: false, error: err };
+  
   });
-
-  console.log("Respuesta Email enviado:", resp);
-
-  return resp;
 }
 
 module.exports = async function handler(req, res) {
@@ -92,7 +102,7 @@ module.exports = async function handler(req, res) {
     const row = [
       iso, nombre, telefono, correo, tipo, cantidad, precio, total, mensaje, ua, ip
     ];
-    await appendToSheet(row);
+    const sheetResp = await appendToSheet(row);
 
     // 2) Enviar correo de aviso
     const adminTo = requireEnv('MAIL_TO'); // destinatario (parroquia/organizador)
@@ -123,14 +133,25 @@ Total: RD$ ${total}
 Mensaje: ${mensaje || ''}
 `;
 
-    await sendEmail({ to: adminTo, subject, html, text });
+    const emailResp = await sendEmail({ to: adminTo, subject, html, text });
 
-    // Responder OK (no WhatsApp)
-    return res.status(200).json({ ok: true, savedToSheet: true, emailSent: true });
+    if(!sheetResp.ok || !emailResp.ok){
+      return res.status(500).json({ 
+        ok: false, 
+        error: [ sheetResp.error || 'Error al guardar en Sheet', emailResp.error || 'Error al enviar correo' ] 
+      });
+    }else{
+      return res.status(200).json({ 
+        ok: true, 
+        savedToSheet: sheetResp.savedToSheet, 
+        emailSent: emailResp.emailSent,
+        message: 'Solicitud procesada correctamente.'
+      });
+    }
     
   } catch (err) {
     console.error('Error en /api/submit:', err);
-    return res.status(500).json({ error: 'Error interno al procesar la solicitud.' });
+    return res.status(500).json({ ok: false, error: 'Error interno al procesar la solicitud.' });
   }
 };
 
