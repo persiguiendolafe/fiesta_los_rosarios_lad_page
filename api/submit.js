@@ -44,7 +44,7 @@ async function appendToSheet(values) {
 
 async function sendEmail({ to, subject, html, text }) {
 
-  const from = process.env.MAIL_FROM || `Notificaciones <ventas@vendeboletos.online>`;
+  const from = process.env.MAIL_FROM || `Notificaciones <onboarding@resend.dev>`;
 
   const resp = await resend.emails.send({
     from,
