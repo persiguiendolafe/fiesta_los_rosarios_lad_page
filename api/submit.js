@@ -34,7 +34,7 @@ async function appendToSheet(values) {
   );
 
   const sheets = google.sheets({ version: 'v4', auth });
-  sheets.spreadsheets.values.append({
+  return sheets.spreadsheets.values.append({
     spreadsheetId,
     range: sheetRange,
     valueInputOption: 'USER_ENTERED',
@@ -52,7 +52,7 @@ async function sendEmail({ to, subject, html, text }) {
 
   const from = process.env.MAIL_FROM || `Notificaciones <onboarding@resend.dev>`;
 
-  resend.emails.send({
+  return resend.emails.send({
     from,
     to,
     subject,
