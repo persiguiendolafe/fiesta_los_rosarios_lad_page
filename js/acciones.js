@@ -58,6 +58,8 @@
 
   });
 
+  
+
   // Autocompletar si el usuario ya llenó antes
   try{
     const nombrePrev = localStorage.getItem('fiesta:nombre');
