@@ -47,14 +47,7 @@
         })
       });
       const data = await resp.json();
-      console.log("Respuesta Data:", data);
       if (!resp.ok) throw new Error(data?.error || 'Error desconocido');
-      if(data.ok){
-        alert('Solicitud enviada correctamente.');
-        // form.reset();
-        // localStorage.clear();
-        // window.location.href = UEPA;
-      }
 
     } catch (err) {
       console.error(err);
