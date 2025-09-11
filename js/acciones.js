@@ -48,7 +48,9 @@
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data?.error || 'Error desconocido');
-
+      if(data.ok){
+        window.location.href = '../gracias.html';
+      }
     } catch (err) {
       console.error(err);
       alert('No pudimos enviar la solicitud. Inténtalo nuevamente.');

@@ -4,6 +4,7 @@
 
 const { google } = require('googleapis');
 const { Resend } = require('resend');
+const { v4: uuidv4 } = require('uuid');
 
 const resend = new Resend(requireEnv('RESEND_API_KEY'));
 
@@ -81,6 +82,7 @@ module.exports = async function handler(req, res) {
       try { data = JSON.parse(data); } catch {}
     }
 
+    const id_order = uuidv4();
     const nombre = (data.nombre || '').toString().trim();
     const telefono = (data.telefono || '').toString().trim();
     const correo = (data.correo || '').toString().trim();
@@ -100,7 +102,7 @@ module.exports = async function handler(req, res) {
     const now = new Date();
     const iso = now.toISOString();
     const row = [
-      iso, nombre, telefono, correo, tipo, cantidad, precio, total, mensaje, ua, ip
+      iso, nombre, telefono, correo, tipo, cantidad, precio, total, mensaje, ua, ip, id_order
     ];
     const sheetResp = await appendToSheet(row);
 
