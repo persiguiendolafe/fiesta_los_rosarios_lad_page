@@ -1,6 +1,5 @@
 (function(){
     const form = document.getElementById('form-compra');
-    const UEPA = 'https://uepatickets.com/tickets/en/entradas-musica-gran-fiesta-a-la-virgen-de-las-mercedes';
 
     form?.addEventListener('submit',async function(ev){
       ev.preventDefault();
@@ -47,7 +46,14 @@
           })
         });
         const data = await resp.json();
-        if (!resp.ok) throw new Error(data?.error || 'Error desconocido');
+        console.log("Respuesta WS:", data);
+
+        if (!data.ok) throw new Error(data?.error || 'Error desconocido');
+        
+        alert(data.message);
+        form.reset();
+        localStorage.clear();
+        window.location.href = '../gracias.html';        
   
       } catch (err) {
         console.error(err);
