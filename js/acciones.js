@@ -4,9 +4,6 @@
 
   form?.addEventListener('submit',async function(ev){
     ev.preventDefault();
-    console.log("Formulario enviado");
-    alert('ok');
-
     const datos = new FormData(form);
     const nombre = (datos.get('nombre')||'').toString().trim();
     const telefono = (datos.get('telefono')||'').toString().trim();
@@ -54,9 +51,9 @@
       if (!resp.ok) throw new Error(data?.error || 'Error desconocido');
       if(data.ok){
         alert('Solicitud enviada correctamente.');
-        form.reset();
-        localStorage.clear();
-        window.location.href = UEPA;
+        // form.reset();
+        // localStorage.clear();
+        // window.location.href = UEPA;
       }
 
     } catch (err) {
