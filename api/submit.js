@@ -51,7 +51,7 @@ async function appendToSheet(values) {
 
 async function sendEmail({ to, subject, html, text }) {
 
-  const from = process.env.MAIL_FROM || `Notificaciones <onboarding@resend.dev>`;
+  const from = process.env.MAIL_FROM || `Notificaciones <${requireEnv('MAIL_FROM')}>`;
 
   return resend.emails.send({
     from,
@@ -108,10 +108,11 @@ module.exports = async function handler(req, res) {
 
     // 2) Enviar correo de aviso
     const adminTo = requireEnv('MAIL_TO'); // destinatario (parroquia/organizador)
-    const subject = `Nueva solicitud de compra - ${nombre} (${tipo} x${cantidad})`;
+    const subject = `Solicitud de compra - ${id_order} (${tipo} x${cantidad})`;
     const html = `
       <h2>Nueva solicitud</h2>
       <ul>
+        <li><b>Orden:</b> ${id_order}</li>
         <li><b>Fecha:</b> ${iso}</li>
         <li><b>Nombre:</b> ${escapeHtml(nombre)}</li>
         <li><b>Teléfono:</b> ${escapeHtml(telefono)}</li>
@@ -124,6 +125,7 @@ module.exports = async function handler(req, res) {
       </ul>
     `;
     const text = `Nueva solicitud
+Orden: ${id_order}
 Fecha: ${iso}
 Nombre: ${nombre}
 Teléfono: ${telefono}
