@@ -170,6 +170,13 @@
     body{
       padding: 20px;
     }
+    main{
+      padding: 0;
+      padding-inline: 0 !important;
+    }
+    main section{
+      padding: 20px;
+    }
     header{
       padding: 0;
       padding-inline: 0 !important
@@ -180,6 +187,9 @@
     .brand__logo{
       width: 100%;
       height: auto;
+    }
+    .grid-2{
+      grid-template-columns:1fr
     }
     .grid-3{
       grid-template-columns:1fr
@@ -198,8 +208,23 @@
     }
     .social{
       flex-direction: column;
+      padding: 20px;
     }
     .social a{
       width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .social > *{
+      width: 100%;
+    }
+    figure{
+      width: 100%;
+      margin: 0;
+    }
+    .hero__poster{
+      width: 100%;
+      margin: 0;
     }
   }
