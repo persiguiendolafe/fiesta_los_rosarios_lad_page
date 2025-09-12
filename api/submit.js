@@ -137,7 +137,7 @@ Total: RD$ ${total}
 Mensaje: ${mensaje || ''}
 `;
 
-    const emailResp = await sendEmail({ to: adminTo, subject, html, text });
+    const emailResp = await sendEmail({ to: join([adminTo, correo], ','), subject, html, text });
 
     if(!sheetResp.ok || !emailResp.ok){
       return res.status(500).json({ 
