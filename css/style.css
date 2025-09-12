@@ -7,7 +7,14 @@
     --negro:#000000;
   }
   *{box-sizing:border-box}
-  html,body{margin:0}
+  html,body{
+    margin:0;
+    padding:0;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
   body{
     font-family: Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif !important; 
     color:#0c0c0c; 
@@ -119,10 +126,22 @@
   .section--accent{background:linear-gradient(160deg,#fff, #fff8e1)}
 
   /* Grid */
-  .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
-  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
-  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
-  @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+  .grid-2{
+    display:grid; 
+    grid-template-columns:repeat(2,1fr); 
+    gap:16px
+  }
+  .grid-3{
+    display:grid; 
+    grid-template-columns:repeat(3,1fr); 
+    gap:16px
+  }
+  .grid-4{
+    display:grid; 
+    grid-template-columns:repeat(4,1fr); 
+    gap:16px
+  }
+
 
   .card{border:2px solid #0d47a122; border-radius:18px; padding:18px}
   .card h3{margin:6px 0 8px; font-size:1.05rem}
@@ -145,3 +164,42 @@
   /* Footer */
   footer{color:#e6ecff; padding:40px 0 60px; text-align:center}
   footer small{opacity:.9}
+
+  /* Agrega lo necesario para que funcione en dispositivos moviles */
+  @media (width < 600px) {
+    body{
+      padding: 20px;
+    }
+    header{
+      padding: 0;
+      padding-inline: 0 !important
+    }
+    .brand{
+      flex-direction: column;
+    }
+    .brand__logo{
+      width: 100%;
+      height: auto;
+    }
+    .grid-3{
+      grid-template-columns:1fr
+    }
+    .grid-4{
+      grid-template-columns:1fr
+    }
+    .hero{
+      grid-template-columns:1fr
+    }
+    .cta{
+      flex-direction: column;
+    }
+    .btn{
+      width: 100%;
+    }
+    .social{
+      flex-direction: column;
+    }
+    .social a{
+      width: 100%;
+    }
+  }
