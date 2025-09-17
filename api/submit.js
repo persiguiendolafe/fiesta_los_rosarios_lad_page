@@ -60,6 +60,10 @@ async function sendEmail({ to, subject, html, text }) {
     html,
     text,
   }).then((resp) => {
+    if(resp.error){
+      console.error("Error enviando email:", resp.error);
+      return { ok: false, emailSent: false, error: resp.error };
+    }
     console.log("Respuesta Email enviado:", resp);
     return { ok: true, emailSent: true };
   
